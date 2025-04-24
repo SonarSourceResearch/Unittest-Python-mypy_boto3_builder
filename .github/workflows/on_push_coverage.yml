@@ -4,9 +4,6 @@ on:
   push:
     branches:
       - main
-    paths:
-      - mypy_boto3_builder/**
-      - tests/**
   workflow_dispatch: {}
 
 jobs:
