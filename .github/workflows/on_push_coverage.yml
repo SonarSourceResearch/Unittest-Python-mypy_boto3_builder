@@ -27,12 +27,8 @@ jobs:
         run: uv sync --dev
       - name: Build coverage report
         run: uv run pytest --cov mypy_boto3_builder --cov-report=xml --junitxml=junit.xml
-      - name: Upload coverage to Codecov
-        uses: codecov/codecov-action@v4
+      - name: Archive code coverage results
+        uses: actions/upload-artifact@v4
         with:
-          token: ${{ secrets.CODECOV_TOKEN }}
-      - name: Upload test results to Codecov
-        if: ${{ !cancelled() }}
-        uses: codecov/test-results-action@v1
-        with:
-          token: ${{ secrets.CODECOV_TOKEN }}
+          name: code-coverage-report
+          path: coverage.xml
